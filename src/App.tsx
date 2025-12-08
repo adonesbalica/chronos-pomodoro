@@ -1,18 +1,20 @@
-import { Heading } from './components/Heading';
-
 import './styles/theme.css';
 import './styles/global.css';
 
+import { Container } from './components/Container';
+import { Heading } from './components/Heading';
+import { Logo } from './components/Logo';
+
 export function App() {
   return (
-    <div>
-      <Heading>Olá mundo!</Heading>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam debitis,
-        sit necessitatibus nam enim vero molestias facere nihil voluptates
-        laborum in rerum nisi cum quaerat impedit doloribus placeat aliquid
-        quod?
-      </p>
-    </div>
+    <>
+      <Container>
+        <Logo />
+      </Container>
+
+      <Container>
+        <Heading>Menu</Heading>
+      </Container>
+    </>
   );
 }
