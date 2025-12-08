@@ -4,6 +4,8 @@ import './styles/global.css';
 import { Container } from './components/Container';
 import { Logo } from './components/Logo';
 import { Menu } from './components/Menu';
+import { CountDown } from './components/CountDown';
+import { DefaultInput } from './components/DefaultInput';
 
 export function App() {
   return (
@@ -14,6 +16,36 @@ export function App() {
 
       <Container>
         <Menu />
+      </Container>
+
+      <Container>
+        <CountDown />
+      </Container>
+
+      <Container>
+        <form className='form' action=''>
+          <div className='formRow'>
+            <DefaultInput
+              labelText='Test'
+              id='meuInput'
+              type='text'
+              placeholder='Digite algo'
+            />
+          </div>
+
+          <div className='formRow'>
+            <p>Nesse ciclo foque por 25 min.</p>
+          </div>
+
+          <div className='formRow'>
+            <p>Ciclos</p>
+            <p>0 0 0 0 0 0</p>
+          </div>
+
+          <div className='formRow'>
+            <button>Enviar</button>
+          </div>
+        </form>
       </Container>
     </>
   );
