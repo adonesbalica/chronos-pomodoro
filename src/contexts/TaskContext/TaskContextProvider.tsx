@@ -1,4 +1,4 @@
-import { useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
 import { TaskContext } from './TaskContext';
 import { initialTaskState } from './initialStateTask';
 import { taskReducer } from './taskReducer';
@@ -9,6 +9,8 @@ type TaskContextProviderProps = {
 
 export function TaskContextProvider({ children }: TaskContextProviderProps) {
   const [state, dispatch] = useReducer(taskReducer, initialTaskState);
+
+  useEffect(() => {}, []);
 
   return (
     <TaskContext.Provider value={{ state, dispatch }}>
