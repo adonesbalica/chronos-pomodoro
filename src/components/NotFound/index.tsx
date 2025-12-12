@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Container } from '../../components/Container';
 import { GenericHtml } from '../../components/GenericHtml';
 import { Heading } from '../../components/Heading';
@@ -5,6 +6,10 @@ import { MainTemplate } from '../../templates/MainTemplate';
 import { RouterLink } from '../RouterLink';
 
 export function NotFound() {
+  useEffect(() => {
+    document.title + 'Página não econtrada - Chronos Pomodoro';
+  }, []);
+
   return (
     <MainTemplate>
       <Container>

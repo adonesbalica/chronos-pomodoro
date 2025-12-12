@@ -7,6 +7,7 @@ export enum TaskActionTypes {
   COUNT_DOWN = 'COUNT_DOWN',
   COMPLETE_TASK = 'COMPLETE_TASK',
   RESET_STATE = 'RESET_STATE',
+  CHANGE_SETTINGS = 'CHANGE_SETTINGS',
 }
 
 export type TaskActionWithPayLoad =
@@ -17,6 +18,10 @@ export type TaskActionWithPayLoad =
   | {
       type: TaskActionTypes.COUNT_DOWN;
       payload: Pick<TaskStateModel, 'secondsRemaining'>;
+    }
+  | {
+      type: TaskActionTypes.CHANGE_SETTINGS;
+      payload: TaskStateModel['config'];
     };
 
 export type TaskActionWithoutPayload =

@@ -5,7 +5,6 @@ import { taskReducer } from './taskReducer';
 import { TimerWorkManager } from '../../workers/TimerWorkManager';
 import { TaskActionTypes } from './taskActions';
 import { loadBeep } from '../../utils/loadBeep';
-import { formatSecondsToMinutes } from '../../utils/formatSecondsToMinutes';
 import type { TaskStateModel } from '../../models/StateModel';
 
 type TaskContextProviderProps = {
@@ -58,14 +57,17 @@ export function TaskContextProvider({ children }: TaskContextProviderProps) {
 
     if (!state.activeTask) {
       worker.terminate();
-    } else {
-      playBeepRef.current = null;
     }
 
-    document.title = `${state.formatedSecondsRemaining} - chronos pomodoro`;
+    document.title = `${state.formatedSecondsRemaining} - Chronos Pomodoro`;
 
     worker.postMessage(state);
   }, [worker, state]);
+  useEffect(() => {
+    if (!state.activeTask || state.secondsRemaining > 0) {
+      document.title = `${state.formatedSecondsRemaining} - chronos pomodoro`;
+    }
+  }, [state]);
 
   useEffect(() => {
     if (state.activeTask && playBeepRef.current === null) {

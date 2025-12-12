@@ -11,8 +11,6 @@ import { getTaskStatus } from '../../utils/getTaskStatus';
 import { sortTasks, type SortTasksOptions } from '../../utils/sortTasks';
 import { useEffect, useState } from 'react';
 import { TaskActionTypes } from '../../contexts/TaskContext/taskActions';
-import { toast } from 'react-toastify';
-import { Dialog } from '../../components/Dialog';
 import { showMessage } from '../../adapters/showMessage';
 
 export function History() {
@@ -22,8 +20,6 @@ export function History() {
 
   const [sortTaskOptions, setSortTaskOptions] = useState<SortTasksOptions>(
     () => {
-      const sortedTasks = sortTasks({ tasks: state.tasks });
-
       return {
         tasks: sortTasks({ tasks: state.tasks }),
         field: 'startDate',
@@ -53,6 +49,12 @@ export function History() {
       confimation => setConfirmClearHistory(confimation),
     );
   }
+
+  useEffect(() => {
+    showMessage.dismiss();
+
+    document.title + 'Histórico- Chronos Pomodoro';
+  }, []);
 
   useEffect(() => {
     if (!confirmClearHistory) return;
